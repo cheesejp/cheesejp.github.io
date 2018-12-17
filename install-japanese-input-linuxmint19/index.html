@@ -1,235 +1,153 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<!-- Head tag -->
+<!DOCTYPE HTML>
+<html>
 <head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>Linux Mintに日本語入力を追加する手順 | ワン簿（仮)</title>
+  <meta name="author" content="Cheesejp">
+  
+  <meta name="description" content="導入したOSのバージョンLinux Mint 19 Tara
+設定ウィンドウを開く左下の[メニュー]から[設定-&amp;gt;入力]を選択する。
+日本語をインストールする選択欄が表示されるので[日本語]をインストールする。
+インストールパッケージ一覧が表示されるのでインストールする。インストールされるパッ">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta property="og:title" content="Linux Mintに日本語入力を追加する手順">
+  <meta property="og:site_name" content="ワン簿（仮)">
 
-    <!--Description-->
-    
-        <meta name="description" content="導入したOSのバージョンLinux Mint 19 Tara
-設定ウィンドウを開く日本語をインストールするインストールパッケージ一覧が表示されるのでインストールする。パスワードの入力が求められるので入力する。
-入力方法の変更入力方法でIBusが選択できるようになるので選択する。
-Linux Mint">
-    
+  
+    <meta property="og:image" content="">
+  
 
-    <!--Author-->
-    
-        <meta name="author" content="Cheesejp">
-    
-
-    <!--Open Graph Title-->
-    
-        <meta property="og:title" content="Linux Mintに日本語入力を追加する手順">
-    
-
-    <!--Open Graph Description-->
-    
-
-    <!--Open Graph Site Name-->
-    <meta property="og:site_name" content="ワン簿（仮)">
-
-    <!--Type page-->
-    
-        <meta property="og:type" content="article">
-    
-
-    <!--Page Cover-->
-    
-
-    <meta name="twitter:card" content="summary">
-    
-
-    <!-- Title -->
-    
-    <title>Linux Mintに日本語入力を追加する手順 - ワン簿（仮)</title>
-
-    <!-- Tachyons Core CSS -->
-    <link rel="stylesheet" href="//unpkg.com/tachyons/css/tachyons.min.css">
-
-    <!-- Custom Fonts -->
-    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="/css/style.css">
-
-    <!-- Google Analytics -->
-    
-
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="ワン簿（仮)" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
 
 </head>
-
+</html>
 
 <body>
-
-<!-- Main Content -->
-<!-- Banner -->
-<!-- Banner -->
-<div class="w-100 bg-1 ph5-ns ph3 text-light">
-    
-    <nav class="db dt-l w-100 mw8 center border-box pv3">
-        <a class="db dtc-l v-mid link dim w-100 w-25-l tc tl-l mb2 mb0-l white" href="/" title="ワン簿（仮)">
-            <img src="/icon/dog-icon-white.svg" class="dib h3" alt="ワン簿（仮)">
-        </a>
-        <div class="db dtc-l v-mid w-100 w-75-l tc tr-l">
-            
-                <a class="link dim f6 f5-l dib mr3 mr4-l white" href="/" title="Home">
-                    Home
-                </a>
-            
-                <a class="link dim f6 f5-l dib mr3 mr4-l white" href="/archives" title="Archives">
-                    Archives
-                </a>
-            
-                <a class="link dim f6 f5-l dib mr3 mr4-l white" href="/tags" title="Tags">
-                    Tags
-                </a>
-            
-                <a class="link dim f6 f5-l dib mr3 mr4-l white" href="/categories" title="Categories">
-                    Categories
-                </a>
-            
-                <a class="link dim f6 f5-l dib mr3 mr4-l white" href="/about.html" title="About">
-                    About
-                </a>
-            
-                <a class="link dim f6 f5-l dib mr3 mr4-l white" href="/contact.html" title="Contact">
-                    Contact
-                </a>
-            
-        </div>
-    </nav>
-
-    <!-- Title -->
-    <div class="w-100 mw8 center vh-40 dt">
-        <div class="dtc v-mid white">
-            <h1 class="f1-l f2-m tc tc-m tl-ns">Linux Mintに日本語入力を追加する手順</h1>
-            <p class="f4 fw3 pab-100px tc tc-m tl-ns">2018-12-06</p>
-        </div>
-    </div>
-
-    <!-- Icon -->
-    <div class="relative w-100 mw8 center white dn dn-m db-ns">
-        <i class="header-icon fa fa-file-text-o"></i>
-    </div>
+  <header id="header" class="inner"><div class="alignleft">
+  <img src="/shiba-inu-icon-black.svg" alt="ロゴ">
+  <h1><a href="/">ワン簿（仮)</a></h1>
+  <h2><a href="/">しがない犬の備忘録</a></h2>
 </div>
-
-<!-- Content -->
-<div class="w-100 ph2 ph4-m ph5-l mv5 mv6-l">
-    <div class="content">
-        <div class="mw8 center">
-            <div class="cf">
-                <div class="fl w-100 w-70-l mw7 left fw3 lh-copy pr4-ns pr0-m post-content">
-                    <!-- Tags Vertical -->
-                    
-
-                    <!-- Main Post Content -->
-                    <h2 id="導入したOSのバージョン"><a href="#導入したOSのバージョン" class="headerlink" title="導入したOSのバージョン"></a>導入したOSのバージョン</h2><p>Linux Mint 19 Tara</p>
-<h2 id="設定ウィンドウを開く"><a href="#設定ウィンドウを開く" class="headerlink" title="設定ウィンドウを開く"></a>設定ウィンドウを開く</h2><h2 id="日本語をインストールする"><a href="#日本語をインストールする" class="headerlink" title="日本語をインストールする"></a>日本語をインストールする</h2><h2 id="インストールパッケージ一覧が表示されるのでインストールする。"><a href="#インストールパッケージ一覧が表示されるのでインストールする。" class="headerlink" title="インストールパッケージ一覧が表示されるのでインストールする。"></a>インストールパッケージ一覧が表示されるのでインストールする。</h2><p>パスワードの入力が求められるので入力する。</p>
-<h2 id="入力方法の変更"><a href="#入力方法の変更" class="headerlink" title="入力方法の変更"></a>入力方法の変更</h2><p>入力方法で<strong>IBus</strong>が選択できるようになるので選択する。</p>
-<h2 id="Linux-Mintを再起動する"><a href="#Linux-Mintを再起動する" class="headerlink" title="Linux Mintを再起動する"></a>Linux Mintを再起動する</h2><h2 id="タスクバーからMozcを選択"><a href="#タスクバーからMozcを選択" class="headerlink" title="タスクバーからMozcを選択"></a>タスクバーからMozcを選択</h2>
-                    
-                    <!-- Tags Bottom -->
-                    
-
-                    <!-- Comments -->
-                    
-
-
-
-                </div>
-                <div class="fl w-100 w-30-l center fw3 lh-copy pl4-ns tl black-50">
-                    
-                    <hr class="dn-l mw4 black-50 mt5">
-                    
-                    <!-- Widget 1: About -->
-                    <div class="mt5 mt0-l">
-    <article class="dt db-l mw8 mw8-m mw5-ns center ml0-l bg-white mv3">
-        <div class="dn dtc-m db-l v-mid tc pr4 pr0-l" style="min-width: 6rem;">
-            <img src="/icon/dog-icon-black.svg" class="mb4-l br-100 h3 w3 h4-l w4-l dib" title="Cheesejp">
-        </div>
-        <div class="dtc db-l v-mid lh-copy measure center f6 black-50 tj">
-            エンジニア風おじさん && ボードゲーマー。しがないそのへんの犬。
-        </div>
-    </article>
-</div>
-
-                    <hr class="dn-l mw4 black-50 mt5">
-                    
-                    <!-- Widget 2: Categories -->
-                    
-
-                    <!-- Widget 3: Recent Posts -->
-                    <div class="mt5 tc tl-l">
-    <h3>Recent Posts</h3>
+<nav id="main-nav" class="alignright">
+  <ul>
     
-        <p>
-            <a href="/check-tech/">気になる技術メモ</a>
-        </p>
+      <li><a href="/">Home</a></li>
     
-        <p>
-            <a href="/install-japanese-input-linuxmint19/">Linux Mintに日本語入力を追加する手順</a>
-        </p>
+      <li><a href="/archives">Archives</a></li>
     
-</div>
-                </div>
-            </div>
-        </div>
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div>
+</header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2018-12-17T11:10:23.592Z"><a href="/install-japanese-input-linuxmint19/">2018-12-17</a></time>
+      
+      
+  
+    <h1 class="title">Linux Mintに日本語入力を追加する手順</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h2 id="導入したOSのバージョン"><a href="#導入したOSのバージョン" class="headerlink" title="導入したOSのバージョン"></a>導入したOSのバージョン</h2><p>Linux Mint 19 Tara</p>
+<h2 id="設定ウィンドウを開く"><a href="#設定ウィンドウを開く" class="headerlink" title="設定ウィンドウを開く"></a>設定ウィンドウを開く</h2><p><img src="/images/install-japanese-input-linuxmint19/screenshot_1.png" alt="設定ウィンドウを開く"><br>左下の[メニュー]から[設定-&gt;入力]を選択する。</p>
+<h2 id="日本語をインストールする"><a href="#日本語をインストールする" class="headerlink" title="日本語をインストールする"></a>日本語をインストールする</h2><p><img src="/images/install-japanese-input-linuxmint19/screenshot_2.png" alt="日本語をインストールする"><br>選択欄が表示されるので[日本語]をインストールする。</p>
+<h2 id="インストールパッケージ一覧が表示されるのでインストールする。"><a href="#インストールパッケージ一覧が表示されるのでインストールする。" class="headerlink" title="インストールパッケージ一覧が表示されるのでインストールする。"></a>インストールパッケージ一覧が表示されるのでインストールする。</h2><p><img src="/images/install-japanese-input-linuxmint19/screenshot_3.png" alt="インストールパッケージ一覧"><br>インストールされるパッケージの一覧が表示されるので[OK]をクリックする。インストールする際に、パスワードの入力が求められるので入力する。</p>
+<h2 id="入力方法の変更"><a href="#入力方法の変更" class="headerlink" title="入力方法の変更"></a>入力方法の変更</h2><p><img src="/images/install-japanese-input-linuxmint19/screenshot_4.png" alt="入力方法の変更"><br>入力方法で[<strong>IBus</strong>]が選択できるようになっているので、IBusに変更する。</p>
+<h2 id="Linux-Mintを再起動する"><a href="#Linux-Mintを再起動する" class="headerlink" title="Linux Mintを再起動する"></a>Linux Mintを再起動する</h2><p>設定を反映するにはLinuxを再起動する必要があるので、再起動する。</p>
+<h2 id="タスクバーからMozcを選択"><a href="#タスクバーからMozcを選択" class="headerlink" title="タスクバーからMozcを選択"></a>タスクバーからMozcを選択</h2><p><img src="/images/install-japanese-input-linuxmint19/screenshot_5.png" alt="タスクバーからMozcを選択"><br>再起動後、右下のタスクバーで入力モードを切り替えることができる。[<strong>日本語-Mozc</strong>]が選択できるようになっているので、選択する。<br>これにより日本語入力が可能になる。</p>
+
+      
     </div>
+    <footer>
+      
+        
+  
+  <div class="categories">
+    <a href="/categories/Tech/">Tech</a>, <a href="/categories/Tech/Linux/">Linux</a>
+  </div>
+
+        
+        
+  <div class="addthis addthis_toolbox addthis_default_style">
+    
+      <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+    
+    
+      <a class="addthis_button_tweet"></a>
+    
+    
+      <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+    
+    
+      <a class="addthis_button_pinterest_pinit" pi:pinit:layout="horizontal"></a>
+    
+    <a class="addthis_counter addthis_pill_style"></a>
+  </div>
+  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js"></script>
+
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  
+<div class="widget tag">
+  <h3 class="title">Categories</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/Tech/Linux/">Linux</a><small>1</small></li>
+  
+    <li><a href="/categories/Tech/">Tech</a><small>2</small></li>
+  
+  </ul>
 </div>
 
 
-<!-- Footer -->
-<div class="bg-1 ph2 ph5-ns pv5">
-        <div class="mv8">
-            <div class="center tc">
-                
-                    <div class="dib mh3">
-                        <a class="f3 f2-ns white dim" href="https://twitter.com/?lang=en" target="_blank">
-                            <i class="fa fa-twitter"></i>
-                        </a>
-                    </div>
-                
-                    <div class="dib mh3">
-                        <a class="f3 f2-ns white dim" href="https://www.facebook.com/" target="_blank">
-                            <i class="fa fa-facebook"></i>
-                        </a>
-                    </div>
-                
-                    <div class="dib mh3">
-                        <a class="f3 f2-ns white dim" href="https://github.com/klugjo/hexo-theme-anodyne" target="_blank">
-                            <i class="fa fa-github"></i>
-                        </a>
-                    </div>
-                
-                    <div class="dib mh3">
-                        <a class="f3 f2-ns white dim" href="mailto:test@example.com" target="_blank">
-                            <i class="fa fa-envelope"></i>
-                        </a>
-                    </div>
-                
-            </div>
-            <div class="f6 f5-ns center tc white pt5 fw3">
-                Cheesejp
-            </div>
-        </div>
-    </div>
-
-<!-- After Footer -->
-<!-- Disqus Comments -->
+  
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2018 Cheesejp
+  
+</div>
+<div class="clearfix"></div></footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
 
 
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
 
 </body>
-
 </html>
