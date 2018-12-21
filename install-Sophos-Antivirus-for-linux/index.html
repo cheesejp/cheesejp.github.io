@@ -1,0 +1,162 @@
+<!DOCTYPE HTML>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>Linuxにウィルス対策ソフト(Sophos Antivirus for Linux)のインストール | ワン簿（仮）</title>
+  <meta name="author" content="Cheesejp">
+  
+  <meta name="description" content="概要巷ではデスクトップLinuxは堅牢とか、シェアが少ないからウィルス対策ソフトは必要ないっていう話を聞くけれど、僕はウィルス対策ソフトがないとなんだか不安で仕方ない性分なのでインストールした。
+色々調べていると、「ClamAV」というウィルス対策ソフトがメジャーらしいが、こちらのソフトはちょっと設">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="Linuxにウィルス対策ソフト(Sophos Antivirus for Linux)のインストール">
+  <meta property="og:site_name" content="ワン簿（仮）">
+
+  
+    <meta property="og:image" content="">
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="ワン簿（仮）" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+
+</head>
+</html>
+
+<body>
+  <header id="header" class="inner"><div class="alignleft">
+  <a href="/"><img src="/shiba-inu-icon-black.svg" alt="ロゴ"></a>
+  <h1><a href="/">ワン簿（仮）</a></h1>
+  <h2><a href="/">しがない犬の備忘録</a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div>
+</header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2018-12-21T04:14:07.000Z"><a href="/install-Sophos-Antivirus-for-linux/">2018-12-21</a></time>
+      
+      
+  
+    <h1 class="title">Linuxにウィルス対策ソフト(Sophos Antivirus for Linux)のインストール</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h2 id="概要"><a href="#概要" class="headerlink" title="概要"></a>概要</h2><p>巷ではデスクトップLinuxは堅牢とか、シェアが少ないからウィルス対策ソフトは必要ないっていう話を聞くけれど、僕はウィルス対策ソフトがないとなんだか不安で仕方ない性分なのでインストールした。</p>
+<p>色々調べていると、「ClamAV」というウィルス対策ソフトがメジャーらしいが、こちらのソフトはちょっと設定が大変そうだったり、ウィルススキャンがcronに登録して定期実行するのでリアルタイムに監視できなさそうって思った。</p>
+<p>なんかリアルタイムでスキャンできて簡単に構築できるものがないか調べたところ、「Sophos Antivirus for Linux」というものがあるということを知ったので試してみた。</p>
+<h2 id="Sophos-Antivirus-for-Linuxのダウンロード"><a href="#Sophos-Antivirus-for-Linuxのダウンロード" class="headerlink" title="Sophos Antivirus for Linuxのダウンロード"></a>Sophos Antivirus for Linuxのダウンロード</h2><p>以下のページからSophos Antivirus for Linuxをダウンロードする。ダウンロードするには、ユーザー登録、利用規約承諾などがあるため、画面に従い情報を入力する。最後まですすめるとtgzファイルがダウンロードできる。</p>
+<p><a href="https://www.sophos.com/ja-jp/products/free-tools/sophos-antivirus-for-linux.aspx" target="_blank" rel="noopener">Sophos Antivirus for Linuxダウンロードページ</a></p>
+<p><img src="/images/install-Sophos-Antivirus-for-linux/screenshot_1.png" alt="ダウンロードページ"></p>
+<h2 id="Sophos-Antivirus-for-Linuxのインストール"><a href="#Sophos-Antivirus-for-Linuxのインストール" class="headerlink" title="Sophos Antivirus for Linuxのインストール"></a>Sophos Antivirus for Linuxのインストール</h2><p>まずはtgzファイルを解凍する<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar zxvf sav-linux-free-9.tgz</span><br></pre></td></tr></table></figure></p>
+<p>その後、解凍ディレクトリ内に存在する<code>install.sh</code>を実行する。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">cd /path/to/dir/sophos-av</span><br><span class="line">./install.sh</span><br><span class="line"></span><br><span class="line">Sophos Anti-Virus</span><br><span class="line">=================</span><br><span class="line">Copyright 1989-2018 Sophos Limited. All rights reserved.</span><br><span class="line"></span><br><span class="line">Sophos Anti-Virus インストーラへようこそ。Sophos Anti-Virus には、オンアクセススキャナ、オンデマンドコマンドラインスキャナ、Sophos Anti-Virus デーモンがあります。</span><br><span class="line"></span><br><span class="line">オンアクセススキャナ         ファイルがアクセスされると検索し、未感染の場合のみアクセスを許可</span><br><span class="line">オンデマンドスキャナ         コンピュータの全体または一部を直ちに検索</span><br><span class="line">Sophos Anti-Virus デーモン   Sophos Anti-Virus にコントロール、ログ、メール警告機能を提供するバックグラウンドプロセス</span><br><span class="line"></span><br><span class="line">(中略)</span><br><span class="line"></span><br><span class="line">エンドユーザー使用許諾契約および個人情報保護方針に同意します。 はい(Y)/いいえ(N) [N]</span><br><span class="line">&gt;Y</span><br><span class="line"></span><br><span class="line">Sophos Anti-Virus のインストール先を指定してください。 [/opt/sophos-av]</span><br><span class="line">&gt;</span><br><span class="line"></span><br><span class="line">オンアクセス検索を有効にしますか？ はい(Y)/いいえ(N) [Y]</span><br><span class="line">&gt; Y</span><br><span class="line"></span><br><span class="line">ソフォスは、Sophos Anti-Virus での自動アップデートの設定をお勧めします。</span><br><span class="line"></span><br><span class="line">ソフォスから直接アップデートしたり（要アカウント情報）、自社サーバー（ディレクトリや Web サイト（アカウント情報が必要な場合もあります））からアップデートすることができます。</span><br><span class="line"></span><br><span class="line">オートアップデートの種類を選択してください: ソフォス(s)/自社サーバー(o)/なし(n) [s]</span><br><span class="line">&gt; s</span><br><span class="line"></span><br><span class="line">ソフォスから直接アップデートしています。</span><br><span class="line">SAV for Linux の無償バージョン (f) と サポート対応付きバージョン (s) のどちらをインストールしますか？ [s]</span><br><span class="line">&gt; f</span><br><span class="line"></span><br><span class="line">Sophos Anti-Virus for Linux の無償バージョンに対して、サポート対応は提供されていません。</span><br><span class="line">無償ツールのフォーラムは次のサイトを参照してください。http://openforum.sophos.com/</span><br><span class="line">ソフォスからアップデートを行うためにプロキシが必要ですか？ はい(Y)/いいえ(N) [N]</span><br><span class="line">&gt; N</span><br><span class="line"></span><br><span class="line">無償のアップデート用アカウント情報を取得しています。</span><br><span class="line">Sophos Anti-Virus をインストールしています....</span><br><span class="line">適切なカーネルサポートを選択しています...</span><br><span class="line">Sophos Anti-Virus が起動すると、カーネルサポートを見つけるためアップデートします。 これによって大幅な遅れが発生することがあります。</span><br><span class="line">Sophos Anti-Virus は、インストール終了後、開始されました。</span><br><span class="line"></span><br><span class="line">インストールが完了しました。</span><br><span class="line">ご使用のコンピュータは Sophos Anti-Virus で保護されるようになりました。</span><br></pre></td></tr></table></figure></p>
+<h2 id="ウィルス定義の手動アップデート"><a href="#ウィルス定義の手動アップデート" class="headerlink" title="ウィルス定義の手動アップデート"></a>ウィルス定義の手動アップデート</h2><p>以下のコマンドを入力することでウィルス定義の手動アップデートが実行できる<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo /opt/sophos-av/bin/savupdate</span><br></pre></td></tr></table></figure></p>
+<h2 id="【備考】アンインストール"><a href="#【備考】アンインストール" class="headerlink" title="【備考】アンインストール"></a>【備考】アンインストール</h2><p>以下のコマンドを入力することでアンインストールができる。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/opt/sophos-av/uninstall.sh</span><br></pre></td></tr></table></figure></p>
+<h2 id="あとがき"><a href="#あとがき" class="headerlink" title="あとがき"></a>あとがき</h2><p>設定で色々いじれたり、自動アップデートがいつ走るとか、リアルタイムスキャンでウィルスが検出されるとどうなるかとかは未検証だけど、時間があるときにやってみたい。</p>
+<h2 id="参考ページ"><a href="#参考ページ" class="headerlink" title="参考ページ"></a>参考ページ</h2><p>以下のページがとても参考になりました。ありがとうございます。</p>
+<ul>
+<li><a href="https://qiita.com/ayuri/items/342a0ddbd861ab1f5134" target="_blank" rel="noopener">Ubuntu Server 16.04にSophos Antivirus for Linuxをインストールする</a></li>
+<li><a href="https://qiita.com/umchifre/items/1a01330d596680642585" target="_blank" rel="noopener">ソフォスの無料版 Linux アンチウイルス製品を試す</a></li>
+</ul>
+
+      
+    </div>
+    <footer>
+      
+        
+  
+  <div class="categories">
+    <a href="/categories/その他/">その他</a>
+  </div>
+
+        
+        
+  <div class="addthis addthis_toolbox addthis_default_style">
+    
+      <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+    
+    
+      <a class="addthis_button_tweet"></a>
+    
+    
+      <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+    
+    
+      <a class="addthis_button_pinterest_pinit" pi:pinit:layout="horizontal"></a>
+    
+    <a class="addthis_counter addthis_pill_style"></a>
+  </div>
+  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js"></script>
+
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  
+<div class="widget tag">
+  <h3 class="title">Categories</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/技術/Linux/">Linux</a><small>1</small></li>
+  
+    <li><a href="/categories/その他/">その他</a><small>2</small></li>
+  
+    <li><a href="/categories/技術/">技術</a><small>3</small></li>
+  
+  </ul>
+</div>
+
+
+  
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2018 Cheesejp
+  
+</div>
+<div class="clearfix"></div></footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+</body>
+</html>

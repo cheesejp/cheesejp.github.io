@@ -1,0 +1,172 @@
+<!DOCTYPE HTML>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>Windows Subsystem for Linux(WSL)上のUbuntuでホームディレクトリを変更する | ワン簿（仮）</title>
+  <meta name="author" content="Cheesejp">
+  
+  <meta name="description" content="概要Windows Subsystem for Linux(以下WSL)でUbuntuをインストールしたんだけど、Ubuntu内のmdファイルをWindowsのatomエディタで参照したかった。けれど、標準で作成されるホームディレクトリはWindowsから参照する方法がわからなかったので、ホームディ">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="Windows Subsystem for Linux(WSL)上のUbuntuでホームディレクトリを変更する">
+  <meta property="og:site_name" content="ワン簿（仮）">
+
+  
+    <meta property="og:image" content="">
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="ワン簿（仮）" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+
+</head>
+</html>
+
+<body>
+  <header id="header" class="inner"><div class="alignleft">
+  <a href="/"><img src="/shiba-inu-icon-black.svg" alt="ロゴ"></a>
+  <h1><a href="/">ワン簿（仮）</a></h1>
+  <h2><a href="/">しがない犬の備忘録</a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div>
+</header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2018-12-19T08:23:24.000Z"><a href="/change-home-directory-wsl/">2018-12-19</a></time>
+      
+      
+  
+    <h1 class="title">Windows Subsystem for Linux(WSL)上のUbuntuでホームディレクトリを変更する</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h2 id="概要"><a href="#概要" class="headerlink" title="概要"></a>概要</h2><p>Windows Subsystem for Linux(以下WSL)でUbuntuをインストールしたんだけど、Ubuntu内のmdファイルをWindowsのatomエディタで参照したかった。けれど、標準で作成されるホームディレクトリはWindowsから参照する方法がわからなかったので、ホームディレクトリを変更する手順をとった。</p>
+<p><a href="https://qiita.com/funafuna/items/c3bb78a546cf2605205d" target="_blank" rel="noopener">こちら</a>の記事を参考にさせてもらいました。ありがとうございます。</p>
+<h2 id="実行したOSのバージョン"><a href="#実行したOSのバージョン" class="headerlink" title="実行したOSのバージョン"></a>実行したOSのバージョン</h2><p>Ubuntu 18.04.1 LTS</p>
+<h2 id="ホームディレクトリの変更手順"><a href="#ホームディレクトリの変更手順" class="headerlink" title="ホームディレクトリの変更手順"></a>ホームディレクトリの変更手順</h2><h3 id="Ubuntuのインストール"><a href="#Ubuntuのインストール" class="headerlink" title="Ubuntuのインストール"></a>Ubuntuのインストール</h3><p>WSLを有効化し、Ubuntuをインストールする。インストールする手順は、記事の本流から外れてしまうので割愛する。</p>
+<h3 id="新しいホームディレクトリを作成する"><a href="#新しいホームディレクトリを作成する" class="headerlink" title="新しいホームディレクトリを作成する"></a>新しいホームディレクトリを作成する</h3><p>WindowsのCドライブが<code>/mnt/c</code>で参照できるため、以下のコマンドで新しいホームディレクトリを作成する。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/mnt/c/linux-home/username</span><br></pre></td></tr></table></figure>
+<h3 id="ホームディレクトリの変更"><a href="#ホームディレクトリの変更" class="headerlink" title="ホームディレクトリの変更"></a>ホームディレクトリの変更</h3><p><code>/etc/passwd</code>にユーザーのホームディレクトリのパスが記されているので、エディタ等で変更する。編集にはroot権限が必要なので注意すること。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/passwd</span><br><span class="line"></span><br><span class="line">username:x:1000:1000:,,,:/home/username:/bin/bash</span><br><span class="line">↓（変更する）</span><br><span class="line">username:x:1000:1000:,,,:/mnt/c/linux-home/username:/bin/bash</span><br></pre></td></tr></table></figure></p>
+<h3 id="設定ファイルの移行"><a href="#設定ファイルの移行" class="headerlink" title="設定ファイルの移行"></a>設定ファイルの移行</h3><p>標準のホームディレクトリには、<code>.bashrc</code>や<code>.viminfo</code>などの設定ファイルが存在するので、新しいホームディレクトリにすべて移動する。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mv -v ~/.[^\.]* /mnt/c/linux-home/username/</span><br></pre></td></tr></table></figure>
+<h3 id="Ubuntuのシェルを再起動し、ホームディレクトリが変更されているか確認"><a href="#Ubuntuのシェルを再起動し、ホームディレクトリが変更されているか確認" class="headerlink" title="Ubuntuのシェルを再起動し、ホームディレクトリが変更されているか確認"></a>Ubuntuのシェルを再起動し、ホームディレクトリが変更されているか確認</h3><p>Ubuntuのシェルをいったん終了したあと再度起動し、ホームディレクトリが<code>/mnt/c/linux-home/username</code>に変更されていることを確認する。</p>
+<h2 id="ファイルパーミッションを設定できるようにする"><a href="#ファイルパーミッションを設定できるようにする" class="headerlink" title="ファイルパーミッションを設定できるようにする"></a>ファイルパーミッションを設定できるようにする</h2><p>上記の手順で<code>/mnt/c</code>をホームディレクトリにすると、作成したファイルがすべて777パーミッションで作成され、chmodが効かない現象が発生する。これは、デフォルトでは<code>/mnt/c</code>がメタデータを保持できない形になっており、Linuxのファイルパーミッションが設定できないためである。</p>
+<p>この問題は、Windows10 RS4というバージョンから改良されており、Cドライブを<code>devfs</code>というファイルシステムのメタデータありでマウントすることによって解決することができるようになっているとのこと。詳細は<a href="http://ascii.jp/elem/000/001/623/1623594/" target="_blank" rel="noopener">こちら</a>の記事が詳しく説明してくれている。</p>
+<p>手順については<a href="https://qiita.com/remin/items/a726128ab388cb73d9ee" target="_blank" rel="noopener">こちら</a>が参考になりました。<br>両ページに感謝いたします。</p>
+<h3 id="Cドライブのマウント形式を変更する"><a href="#Cドライブのマウント形式を変更する" class="headerlink" title="Cドライブのマウント形式を変更する"></a>Cドライブのマウント形式を変更する</h3><p>以下の手順でWindowsのCドライブを<code>devfs</code>ファイルシステムのメタデータ有効化をした状態でマウントができる。</p>
+<blockquote>
+<p>WindowsのファイルシステムにはLinuxのメタデータが存在しないため、パーミッションを設定することができませんでした。しかし、build 17063のリリースによってそのメタデータを扱えるようになりました。メタデータを有効にするには、次のようにmetadataオプションを付けてドライブをマウントします。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo umount /mnt/c</span><br><span class="line">sudo mount -t drvfs C: /mnt/c -o metadata</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<h3 id="設定の恒久化"><a href="#設定の恒久化" class="headerlink" title="設定の恒久化"></a>設定の恒久化</h3><p>「build 17093」から上記の設定が恒久化できるみたい。</p>
+<blockquote>
+<p>WSLの設定ファイル/etc/wsl.confを編集します。ファイルが存在しない場合は作成してください<br>[automount]セクションのoptionsにmetadataを追加します。必要な最小限の設定は次のようになります。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[automount]</span><br><span class="line">options = &quot;metadata&quot;</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
+<p>すでにoptionsがある場合は「,」区切りでその前か後に追記します。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">options = &quot;metadata,case=off&quot;</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://qiita.com/remin/items/a726128ab388cb73d9ee" target="_blank" rel="noopener">WSLからマウントしたWindowsのドライブでchmodしたい</a></p>
+<p><a href="http://ascii.jp/elem/000/001/623/1623594/" target="_blank" rel="noopener">RS4におけるWindows Subsystem for Linuxの改良点 drvfsのメタデータ対応</a></p>
+<p><a href="https://qiita.com/funafuna/items/c3bb78a546cf2605205d" target="_blank" rel="noopener">【WSL】ホームディレクトリ変更手順</a></p>
+
+      
+    </div>
+    <footer>
+      
+        
+  
+  <div class="categories">
+    <a href="/categories/技術/">技術</a>
+  </div>
+
+        
+        
+  <div class="addthis addthis_toolbox addthis_default_style">
+    
+      <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+    
+    
+      <a class="addthis_button_tweet"></a>
+    
+    
+      <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+    
+    
+      <a class="addthis_button_pinterest_pinit" pi:pinit:layout="horizontal"></a>
+    
+    <a class="addthis_counter addthis_pill_style"></a>
+  </div>
+  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js"></script>
+
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  
+<div class="widget tag">
+  <h3 class="title">Categories</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/技術/Linux/">Linux</a><small>1</small></li>
+  
+    <li><a href="/categories/その他/">その他</a><small>2</small></li>
+  
+    <li><a href="/categories/技術/">技術</a><small>3</small></li>
+  
+  </ul>
+</div>
+
+
+  
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2018 Cheesejp
+  
+</div>
+<div class="clearfix"></div></footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+</body>
+</html>
