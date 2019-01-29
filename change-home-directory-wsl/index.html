@@ -52,7 +52,7 @@
     <header>
       
         <div class="icon"></div>
-        <time datetime="2018-12-19T08:23:24.000Z"><a href="/change-home-directory-wsl/">2018-12-19</a></time>
+        <time datetime="2019-01-29T15:30:04.996Z"><a href="/change-home-directory-wsl/">2019-01-30</a></time>
       
       
   
@@ -72,35 +72,19 @@
 <h3 id="設定ファイルの移行"><a href="#設定ファイルの移行" class="headerlink" title="設定ファイルの移行"></a>設定ファイルの移行</h3><p>標準のホームディレクトリには、<code>.bashrc</code>や<code>.viminfo</code>などの設定ファイルが存在するので、新しいホームディレクトリにすべて移動する。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mv -v ~/.[^\.]* /mnt/c/linux-home/username/</span><br></pre></td></tr></table></figure>
 <h3 id="Ubuntuのシェルを再起動し、ホームディレクトリが変更されているか確認"><a href="#Ubuntuのシェルを再起動し、ホームディレクトリが変更されているか確認" class="headerlink" title="Ubuntuのシェルを再起動し、ホームディレクトリが変更されているか確認"></a>Ubuntuのシェルを再起動し、ホームディレクトリが変更されているか確認</h3><p>Ubuntuのシェルをいったん終了したあと再度起動し、ホームディレクトリが<code>/mnt/c/linux-home/username</code>に変更されていることを確認する。</p>
-<h2 id="ファイルパーミッションを設定できるようにする"><a href="#ファイルパーミッションを設定できるようにする" class="headerlink" title="ファイルパーミッションを設定できるようにする"></a>ファイルパーミッションを設定できるようにする</h2><p>上記の手順で<code>/mnt/c</code>をホームディレクトリにすると、作成したファイルがすべて777パーミッションで作成され、chmodが効かない現象が発生する。これは、デフォルトでは<code>/mnt/c</code>がメタデータを保持できない形になっており、Linuxのファイルパーミッションが設定できないためである。</p>
-<p>この問題は、Windows10 RS4というバージョンから改良されており、Cドライブを<code>devfs</code>というファイルシステムのメタデータありでマウントすることによって解決することができるようになっているとのこと。詳細は<a href="http://ascii.jp/elem/000/001/623/1623594/" target="_blank" rel="noopener">こちら</a>の記事が詳しく説明してくれている。</p>
-<p>手順については<a href="https://qiita.com/remin/items/a726128ab388cb73d9ee" target="_blank" rel="noopener">こちら</a>が参考になりました。<br>両ページに感謝いたします。</p>
-<h3 id="Cドライブのマウント形式を変更する"><a href="#Cドライブのマウント形式を変更する" class="headerlink" title="Cドライブのマウント形式を変更する"></a>Cドライブのマウント形式を変更する</h3><p>以下の手順でWindowsのCドライブを<code>devfs</code>ファイルシステムのメタデータ有効化をした状態でマウントができる。</p>
-<blockquote>
-<p>WindowsのファイルシステムにはLinuxのメタデータが存在しないため、パーミッションを設定することができませんでした。しかし、build 17063のリリースによってそのメタデータを扱えるようになりました。メタデータを有効にするには、次のようにmetadataオプションを付けてドライブをマウントします。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo umount /mnt/c</span><br><span class="line">sudo mount -t drvfs C: /mnt/c -o metadata</span><br></pre></td></tr></table></figure></p>
-</blockquote>
-<h3 id="設定の恒久化"><a href="#設定の恒久化" class="headerlink" title="設定の恒久化"></a>設定の恒久化</h3><p>「build 17093」から上記の設定が恒久化できるみたい。</p>
-<blockquote>
-<p>WSLの設定ファイル/etc/wsl.confを編集します。ファイルが存在しない場合は作成してください<br>[automount]セクションのoptionsにmetadataを追加します。必要な最小限の設定は次のようになります。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[automount]</span><br><span class="line">options = &quot;metadata&quot;</span><br></pre></td></tr></table></figure></p>
-</blockquote>
-<blockquote>
-<p>すでにoptionsがある場合は「,」区切りでその前か後に追記します。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">options = &quot;metadata,case=off&quot;</span><br></pre></td></tr></table></figure></p>
-</blockquote>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://qiita.com/remin/items/a726128ab388cb73d9ee" target="_blank" rel="noopener">WSLからマウントしたWindowsのドライブでchmodしたい</a></p>
-<p><a href="http://ascii.jp/elem/000/001/623/1623594/" target="_blank" rel="noopener">RS4におけるWindows Subsystem for Linuxの改良点 drvfsのメタデータ対応</a></p>
-<p><a href="https://qiita.com/funafuna/items/c3bb78a546cf2605205d" target="_blank" rel="noopener">【WSL】ホームディレクトリ変更手順</a></p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://qiita.com/funafuna/items/c3bb78a546cf2605205d" target="_blank" rel="noopener">【WSL】ホームディレクトリ変更手順</a></p>
 
       
     </div>
     <footer>
       
         
+        
   
-  <div class="categories">
-    <a href="/categories/技術/">技術</a>
+  <div class="tags">
+    <a href="/tags/Linux/">Linux</a>, <a href="/tags/Windows/">Windows</a>
   </div>
 
-        
         
   <div class="addthis addthis_toolbox addthis_default_style">
     
@@ -130,26 +114,28 @@
     <aside id="sidebar" class="alignright">
   
 <div class="widget tag">
-  <h3 class="title">Categories</h3>
+  <h3 class="title">Tags</h3>
   <ul class="entry">
   
-    <li><a href="/categories/技術/Linux/">Linux</a><small>1</small></li>
+    <li><a href="/tags/Linux/">Linux</a><small>5</small></li>
   
-    <li><a href="/categories/その他/">その他</a><small>2</small></li>
+    <li><a href="/tags/Unity/">Unity</a><small>1</small></li>
   
-    <li><a href="/categories/技術/">技術</a><small>3</small></li>
+    <li><a href="/tags/Windows/">Windows</a><small>2</small></li>
+  
+    <li><a href="/tags/git/">git</a><small>1</small></li>
+  
+    <li><a href="/tags/その他/">その他</a><small>3</small></li>
   
   </ul>
 </div>
 
-
-  
 </aside>
     <div class="clearfix"></div>
   </div>
   <footer id="footer" class="inner"><div class="alignleft">
   
-  &copy; 2018 Cheesejp
+  &copy; 2019 Cheesejp
   
 </div>
 <div class="clearfix"></div></footer>

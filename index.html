@@ -51,33 +51,34 @@
     <header>
       
         <div class="icon"></div>
-        <time datetime="2018-12-21T04:14:07.000Z"><a href="/install-Sophos-Antivirus-for-linux/">2018-12-21</a></time>
+        <time datetime="2019-01-29T15:40:48.495Z"><a href="/memo-unity-words/">2019-01-30</a></time>
       
       
   
-    <h1 class="title"><a href="/install-Sophos-Antivirus-for-linux/">Linuxにウィルス対策ソフト(Sophos Antivirus for Linux)のインストール</a></h1>
+    <h1 class="title"><a href="/memo-unity-words/">Unityの単語メモ</a></h1>
   
 
     </header>
     <div class="entry">
       
-        <h2 id="概要"><a href="#概要" class="headerlink" title="概要"></a>概要</h2><p>巷ではデスクトップLinuxは堅牢とか、シェアが少ないからウィルス対策ソフトは必要ないっていう話を聞くけれど、僕はウィルス対策ソフトがないとなんだか不安で仕方ない性分なのでインストールした。</p>
-<p>色々調べていると、「ClamAV」というウィルス対策ソフトがメジャーらしいが、こちらのソフトはちょっと設定が大変そうだったり、ウィルススキャンがcronに登録して定期実行するのでリアルタイムに監視できなさそうって思った。</p>
-<p>なんかリアルタイムでスキャンできて簡単に構築できるものがないか調べたところ、「Sophos Antivirus for Linux」というものがあるということを知ったので試してみた。</p>
-<h2 id="Sophos-Antivirus-for-Linuxのダウンロード"><a href="#Sophos-Antivirus-for-Linuxのダウンロード" class="headerlink" title="Sophos Antivirus for Linuxのダウンロード"></a>Sophos Antivirus for Linuxのダウンロード</h2><p>以下のページからSophos Antivirus for Linuxをダウンロードする。ダウンロードするには、ユーザー登録、利用規約承諾などがあるため、画面に従い情報を入力する。最後まですすめるとtgzファイルがダウンロードできる。</p>
-<p><a href="https://www.sophos.com/ja-jp/products/free-tools/sophos-antivirus-for-linux.aspx" target="_blank" rel="noopener">Sophos Antivirus for Linuxダウンロードページ</a></p>
-<p><img src="/images/install-Sophos-Antivirus-for-linux/screenshot_1.png" alt="ダウンロードページ"></p>
-<h2 id="Sophos-Antivirus-for-Linuxのインストール"><a href="#Sophos-Antivirus-for-Linuxのインストール" class="headerlink" title="Sophos Antivirus for Linuxのインストール"></a>Sophos Antivirus for Linuxのインストール</h2><p>まずはtgzファイルを解凍する<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar zxvf sav-linux-free-9.tgz</span><br></pre></td></tr></table></figure></p>
-<p>その後、解凍ディレクトリ内に存在する<code>install.sh</code>を実行する。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">cd /path/to/dir/sophos-av</span><br><span class="line">./install.sh</span><br><span class="line"></span><br><span class="line">Sophos Anti-Virus</span><br><span class="line">=================</span><br><span class="line">Copyright 1989-2018 Sophos Limited. All rights reserved.</span><br><span class="line"></span><br><span class="line">Sophos Anti-Virus インストーラへようこそ。Sophos Anti-Virus には、オンアクセススキャナ、オンデマンドコマンドラインスキャナ、Sophos Anti-Virus デーモンがあります。</span><br><span class="line"></span><br><span class="line">オンアクセススキャナ         ファイルがアクセスされると検索し、未感染の場合のみアクセスを許可</span><br><span class="line">オンデマンドスキャナ         コンピュータの全体または一部を直ちに検索</span><br><span class="line">Sophos Anti-Virus デーモン   Sophos Anti-Virus にコントロール、ログ、メール警告機能を提供するバックグラウンドプロセス</span><br><span class="line"></span><br><span class="line">(中略)</span><br><span class="line"></span><br><span class="line">エンドユーザー使用許諾契約および個人情報保護方針に同意します。 はい(Y)/いいえ(N) [N]</span><br><span class="line">&gt;Y</span><br><span class="line"></span><br><span class="line">Sophos Anti-Virus のインストール先を指定してください。 [/opt/sophos-av]</span><br><span class="line">&gt;</span><br><span class="line"></span><br><span class="line">オンアクセス検索を有効にしますか？ はい(Y)/いいえ(N) [Y]</span><br><span class="line">&gt; Y</span><br><span class="line"></span><br><span class="line">ソフォスは、Sophos Anti-Virus での自動アップデートの設定をお勧めします。</span><br><span class="line"></span><br><span class="line">ソフォスから直接アップデートしたり（要アカウント情報）、自社サーバー（ディレクトリや Web サイト（アカウント情報が必要な場合もあります））からアップデートすることができます。</span><br><span class="line"></span><br><span class="line">オートアップデートの種類を選択してください: ソフォス(s)/自社サーバー(o)/なし(n) [s]</span><br><span class="line">&gt; s</span><br><span class="line"></span><br><span class="line">ソフォスから直接アップデートしています。</span><br><span class="line">SAV for Linux の無償バージョン (f) と サポート対応付きバージョン (s) のどちらをインストールしますか？ [s]</span><br><span class="line">&gt; f</span><br><span class="line"></span><br><span class="line">Sophos Anti-Virus for Linux の無償バージョンに対して、サポート対応は提供されていません。</span><br><span class="line">無償ツールのフォーラムは次のサイトを参照してください。http://openforum.sophos.com/</span><br><span class="line">ソフォスからアップデートを行うためにプロキシが必要ですか？ はい(Y)/いいえ(N) [N]</span><br><span class="line">&gt; N</span><br><span class="line"></span><br><span class="line">無償のアップデート用アカウント情報を取得しています。</span><br><span class="line">Sophos Anti-Virus をインストールしています....</span><br><span class="line">適切なカーネルサポートを選択しています...</span><br><span class="line">Sophos Anti-Virus が起動すると、カーネルサポートを見つけるためアップデートします。 これによって大幅な遅れが発生することがあります。</span><br><span class="line">Sophos Anti-Virus は、インストール終了後、開始されました。</span><br><span class="line"></span><br><span class="line">インストールが完了しました。</span><br><span class="line">ご使用のコンピュータは Sophos Anti-Virus で保護されるようになりました。</span><br></pre></td></tr></table></figure></p>
-<h2 id="ウィルス定義の手動アップデート"><a href="#ウィルス定義の手動アップデート" class="headerlink" title="ウィルス定義の手動アップデート"></a>ウィルス定義の手動アップデート</h2><p>以下のコマンドを入力することでウィルス定義の手動アップデートが実行できる<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo /opt/sophos-av/bin/savupdate</span><br></pre></td></tr></table></figure></p>
-<h2 id="【備考】アンインストール"><a href="#【備考】アンインストール" class="headerlink" title="【備考】アンインストール"></a>【備考】アンインストール</h2><p>以下のコマンドを入力することでアンインストールができる。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/opt/sophos-av/uninstall.sh</span><br></pre></td></tr></table></figure></p>
-<h2 id="あとがき"><a href="#あとがき" class="headerlink" title="あとがき"></a>あとがき</h2><p>設定で色々いじれたり、自動アップデートがいつ走るとか、リアルタイムスキャンでウィルスが検出されるとどうなるかとかは未検証だけど、時間があるときにやってみたい。</p>
-<h2 id="参考ページ"><a href="#参考ページ" class="headerlink" title="参考ページ"></a>参考ページ</h2><p>以下のページがとても参考になりました。ありがとうございます。</p>
-<ul>
-<li><a href="https://qiita.com/ayuri/items/342a0ddbd861ab1f5134" target="_blank" rel="noopener">Ubuntu Server 16.04にSophos Antivirus for Linuxをインストールする</a></li>
-<li><a href="https://qiita.com/umchifre/items/1a01330d596680642585" target="_blank" rel="noopener">ソフォスの無料版 Linux アンチウイルス製品を試す</a></li>
-</ul>
-
+        <h2 id="概要"><a href="#概要" class="headerlink" title="概要"></a>概要</h2><p>Unityの学習中なんだけど用語が多く、初めて触る業界なので用語が覚えられなかった。そのため、メモして覚えることにした。</p>
+<h2 id="レンダリング-Rendering"><a href="#レンダリング-Rendering" class="headerlink" title="レンダリング(Rendering)"></a>レンダリング(Rendering)</h2><p>データをもとに3Dオブジェクトを画面に描き出すこと。描き出すソフトウェアをレンダリングエンジンまたはレンダラーと呼んだりする。</p>
+<h2 id="プロジェクト-Project"><a href="#プロジェクト-Project" class="headerlink" title="プロジェクト(Project)"></a>プロジェクト(Project)</h2><p>ゲームそのものに相当するもの。1つのゲームは1つのプロジェクトで管理される。プロジェクトは、1つ以上のシーンによって成り立っている。</p>
+<h2 id="シーン-Scene"><a href="#シーン-Scene" class="headerlink" title="シーン(Scene)"></a>シーン(Scene)</h2><p>ゲームの画面に相当するもの。ゲーム画面1つにつき1つのシーンを用意する必要がある。シーンは1つ以上のオブジェクトによって成り立っている。</p>
+<h2 id="オブジェクト-GameObject"><a href="#オブジェクト-GameObject" class="headerlink" title="オブジェクト(GameObject)"></a>オブジェクト(GameObject)</h2><p>ゲーム内の「モノ」とか「要素」に相当するもの。1つのオブジェクトで1つの物体を表現することもあるし、複数のオブジェクトで1つの物体を<br>表現することもある。コンポーネントを設定することによって、特徴づけ(どんな物質とか、当たり判定があるかなど)ができる。</p>
+<h2 id="コンポーネント-Component"><a href="#コンポーネント-Component" class="headerlink" title="コンポーネント(Component)"></a>コンポーネント(Component)</h2><p>オブジェクトに特徴づけ(どんな物質とか、当たり判定があるかなど)を行う設定。</p>
+<h2 id="アセット-Asset"><a href="#アセット-Asset" class="headerlink" title="アセット(Asset)"></a>アセット(Asset)</h2><p>ゲームを構成する要素の最小単位を指す。キャラクター、テクスチャ、オーディオ素材などがそれにあたる。アセットはすべて「Assets」ディレクトリに格納する。</p>
+<h2 id="リジッドボディ-RigidBody"><a href="#リジッドボディ-RigidBody" class="headerlink" title="リジッドボディ(RigidBody)"></a>リジッドボディ(RigidBody)</h2><p>オブジェクトに「物理挙動」を持たせるためのコンポーネント。書籍では、オブジェクトに重力の影響を与えるために設定していた。</p>
+<h2 id="アタッチ-Attach"><a href="#アタッチ-Attach" class="headerlink" title="アタッチ(Attach)"></a>アタッチ(Attach)</h2><p>オブジェクトにコンポーネントを追加すること。</p>
+<h2 id="コライダー-Collider"><a href="#コライダー-Collider" class="headerlink" title="コライダー(Collider)"></a>コライダー(Collider)</h2><p>オブジェクトの当たり判定を行うコンポーネント。一般的にはオブジェクトを置いてからコライダーをアタッチする必要があるが、Unityにデフォルトで用意されているCubeオブジェクトやSphereオブジェクトは、予め物体の形状に合わせたコライダーが設定されている。</p>
+<h2 id="スプライト-Sprite"><a href="#スプライト-Sprite" class="headerlink" title="スプライト(Sprite)"></a>スプライト(Sprite)</h2><p>2Dゲームを構成する画像をまとめた素材データのこと。1枚または複数枚の画像をまとめている。Unityのスプライトエディター(Sprite Editor)で画像素材を切り分けて、ゲーム内に配置していく。</p>
+<h2 id="プレハブ-Prefab"><a href="#プレハブ-Prefab" class="headerlink" title="プレハブ(Prefab)"></a>プレハブ(Prefab)</h2><p>オブジェクトをスタンプのように複製して量産できるようにするUnityの機能。</p>
+<h2 id="インスタンス-Instance"><a href="#インスタンス-Instance" class="headerlink" title="インスタンス(Instance)"></a>インスタンス(Instance)</h2><p>プレハブから生成されたオブジェクトのこと。</p>
+<h2 id="キャンバス-Canvas"><a href="#キャンバス-Canvas" class="headerlink" title="キャンバス(Canvas)"></a>キャンバス(Canvas)</h2><p>UIオブジェクトを追加すると作成されるオブジェクト。キャンバスの子オブジェクトとしてテキストなどのUIオブジェクトが追加される。</p>
+<h2 id="タグ-Tag"><a href="#タグ-Tag" class="headerlink" title="タグ(Tag)"></a>タグ(Tag)</h2><p>オブジェクトを識別するために設定する情報。設定しておくことで、スクリプトからそのオブジェクトがどのタグに属するかを識別することができるようになる。例えば、Player（プレイヤーのキャラ）のタグなど、ゲームを作る上で使用頻度が高いタグは最初から用意されている。</p>
+<h2 id="アセットバンドル（Asset-Bundle）"><a href="#アセットバンドル（Asset-Bundle）" class="headerlink" title="アセットバンドル（Asset Bundle）"></a>アセットバンドル（Asset Bundle）</h2><p>アセットをひとつにまとめたもの。Unity5.3からLZ4形式で圧縮されるようになり、各ファイルごとに解凍して使用できるようになった。それ以前は、バンドル内のアセットを使用する場合バンドル全てを解凍するしかない。主にアセットを動的にダウンロードするようにし、アプリ自体のサイズを削減するために利用される。プラットフォームごとにアセットバンドルを作成する必要がある。</p>
+<h2 id="インステンシエイト（Instantiate）"><a href="#インステンシエイト（Instantiate）" class="headerlink" title="インステンシエイト（Instantiate）"></a>インステンシエイト（Instantiate）</h2><p>original のオブジェクトをクローンする処理。あらかじめオブジェクトを読み込んでおいて、この処理でクローンする実装にすれば、同じオブジェクトを複数登場させる処理を実装するときに軽く実装することができる。シューティングゲームの弾の生成処理の実装に使われるらしい。あんまりやりすぎると重くなる。</p>
+<h2 id="シェーダー（shader）"><a href="#シェーダー（shader）" class="headerlink" title="シェーダー（shader）"></a>シェーダー（shader）</h2><h2 id="アドレッサブルアセットシステム（Addressable-Assets-System）"><a href="#アドレッサブルアセットシステム（Addressable-Assets-System）" class="headerlink" title="アドレッサブルアセットシステム（Addressable Assets System）"></a>アドレッサブルアセットシステム（Addressable Assets System）</h2>
       
     </div>
     <footer>
@@ -99,66 +100,7 @@
     <header>
       
         <div class="icon"></div>
-        <time datetime="2018-12-19T08:23:24.000Z"><a href="/change-home-directory-wsl/">2018-12-19</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/change-home-directory-wsl/">Windows Subsystem for Linux(WSL)上のUbuntuでホームディレクトリを変更する</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <h2 id="概要"><a href="#概要" class="headerlink" title="概要"></a>概要</h2><p>Windows Subsystem for Linux(以下WSL)でUbuntuをインストールしたんだけど、Ubuntu内のmdファイルをWindowsのatomエディタで参照したかった。けれど、標準で作成されるホームディレクトリはWindowsから参照する方法がわからなかったので、ホームディレクトリを変更する手順をとった。</p>
-<p><a href="https://qiita.com/funafuna/items/c3bb78a546cf2605205d" target="_blank" rel="noopener">こちら</a>の記事を参考にさせてもらいました。ありがとうございます。</p>
-<h2 id="実行したOSのバージョン"><a href="#実行したOSのバージョン" class="headerlink" title="実行したOSのバージョン"></a>実行したOSのバージョン</h2><p>Ubuntu 18.04.1 LTS</p>
-<h2 id="ホームディレクトリの変更手順"><a href="#ホームディレクトリの変更手順" class="headerlink" title="ホームディレクトリの変更手順"></a>ホームディレクトリの変更手順</h2><h3 id="Ubuntuのインストール"><a href="#Ubuntuのインストール" class="headerlink" title="Ubuntuのインストール"></a>Ubuntuのインストール</h3><p>WSLを有効化し、Ubuntuをインストールする。インストールする手順は、記事の本流から外れてしまうので割愛する。</p>
-<h3 id="新しいホームディレクトリを作成する"><a href="#新しいホームディレクトリを作成する" class="headerlink" title="新しいホームディレクトリを作成する"></a>新しいホームディレクトリを作成する</h3><p>WindowsのCドライブが<code>/mnt/c</code>で参照できるため、以下のコマンドで新しいホームディレクトリを作成する。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/mnt/c/linux-home/username</span><br></pre></td></tr></table></figure>
-<h3 id="ホームディレクトリの変更"><a href="#ホームディレクトリの変更" class="headerlink" title="ホームディレクトリの変更"></a>ホームディレクトリの変更</h3><p><code>/etc/passwd</code>にユーザーのホームディレクトリのパスが記されているので、エディタ等で変更する。編集にはroot権限が必要なので注意すること。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/passwd</span><br><span class="line"></span><br><span class="line">username:x:1000:1000:,,,:/home/username:/bin/bash</span><br><span class="line">↓（変更する）</span><br><span class="line">username:x:1000:1000:,,,:/mnt/c/linux-home/username:/bin/bash</span><br></pre></td></tr></table></figure></p>
-<h3 id="設定ファイルの移行"><a href="#設定ファイルの移行" class="headerlink" title="設定ファイルの移行"></a>設定ファイルの移行</h3><p>標準のホームディレクトリには、<code>.bashrc</code>や<code>.viminfo</code>などの設定ファイルが存在するので、新しいホームディレクトリにすべて移動する。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mv -v ~/.[^\.]* /mnt/c/linux-home/username/</span><br></pre></td></tr></table></figure>
-<h3 id="Ubuntuのシェルを再起動し、ホームディレクトリが変更されているか確認"><a href="#Ubuntuのシェルを再起動し、ホームディレクトリが変更されているか確認" class="headerlink" title="Ubuntuのシェルを再起動し、ホームディレクトリが変更されているか確認"></a>Ubuntuのシェルを再起動し、ホームディレクトリが変更されているか確認</h3><p>Ubuntuのシェルをいったん終了したあと再度起動し、ホームディレクトリが<code>/mnt/c/linux-home/username</code>に変更されていることを確認する。</p>
-<h2 id="ファイルパーミッションを設定できるようにする"><a href="#ファイルパーミッションを設定できるようにする" class="headerlink" title="ファイルパーミッションを設定できるようにする"></a>ファイルパーミッションを設定できるようにする</h2><p>上記の手順で<code>/mnt/c</code>をホームディレクトリにすると、作成したファイルがすべて777パーミッションで作成され、chmodが効かない現象が発生する。これは、デフォルトでは<code>/mnt/c</code>がメタデータを保持できない形になっており、Linuxのファイルパーミッションが設定できないためである。</p>
-<p>この問題は、Windows10 RS4というバージョンから改良されており、Cドライブを<code>devfs</code>というファイルシステムのメタデータありでマウントすることによって解決することができるようになっているとのこと。詳細は<a href="http://ascii.jp/elem/000/001/623/1623594/" target="_blank" rel="noopener">こちら</a>の記事が詳しく説明してくれている。</p>
-<p>手順については<a href="https://qiita.com/remin/items/a726128ab388cb73d9ee" target="_blank" rel="noopener">こちら</a>が参考になりました。<br>両ページに感謝いたします。</p>
-<h3 id="Cドライブのマウント形式を変更する"><a href="#Cドライブのマウント形式を変更する" class="headerlink" title="Cドライブのマウント形式を変更する"></a>Cドライブのマウント形式を変更する</h3><p>以下の手順でWindowsのCドライブを<code>devfs</code>ファイルシステムのメタデータ有効化をした状態でマウントができる。</p>
-<blockquote>
-<p>WindowsのファイルシステムにはLinuxのメタデータが存在しないため、パーミッションを設定することができませんでした。しかし、build 17063のリリースによってそのメタデータを扱えるようになりました。メタデータを有効にするには、次のようにmetadataオプションを付けてドライブをマウントします。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo umount /mnt/c</span><br><span class="line">sudo mount -t drvfs C: /mnt/c -o metadata</span><br></pre></td></tr></table></figure></p>
-</blockquote>
-<h3 id="設定の恒久化"><a href="#設定の恒久化" class="headerlink" title="設定の恒久化"></a>設定の恒久化</h3><p>「build 17093」から上記の設定が恒久化できるみたい。</p>
-<blockquote>
-<p>WSLの設定ファイル/etc/wsl.confを編集します。ファイルが存在しない場合は作成してください<br>[automount]セクションのoptionsにmetadataを追加します。必要な最小限の設定は次のようになります。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[automount]</span><br><span class="line">options = &quot;metadata&quot;</span><br></pre></td></tr></table></figure></p>
-</blockquote>
-<blockquote>
-<p>すでにoptionsがある場合は「,」区切りでその前か後に追記します。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">options = &quot;metadata,case=off&quot;</span><br></pre></td></tr></table></figure></p>
-</blockquote>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://qiita.com/remin/items/a726128ab388cb73d9ee" target="_blank" rel="noopener">WSLからマウントしたWindowsのドライブでchmodしたい</a></p>
-<p><a href="http://ascii.jp/elem/000/001/623/1623594/" target="_blank" rel="noopener">RS4におけるWindows Subsystem for Linuxの改良点 drvfsのメタデータ対応</a></p>
-<p><a href="https://qiita.com/funafuna/items/c3bb78a546cf2605205d" target="_blank" rel="noopener">【WSL】ホームディレクトリ変更手順</a></p>
-
-      
-    </div>
-    <footer>
-      
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
-  <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2018-12-19T08:23:21.000Z"><a href="/memo-gamepc-parts/">2018-12-19</a></time>
+        <time datetime="2019-01-29T15:30:05.008Z"><a href="/memo-gamepc-parts/">2019-01-30</a></time>
       
       
   
@@ -291,7 +233,55 @@
     <header>
       
         <div class="icon"></div>
-        <time datetime="2018-12-17T11:10:56.000Z"><a href="/install-japanese-input-linuxmint19/">2018-12-17</a></time>
+        <time datetime="2019-01-29T15:30:05.004Z"><a href="/install-Sophos-Antivirus-for-linux/">2019-01-30</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/install-Sophos-Antivirus-for-linux/">Linuxにウィルス対策ソフト(Sophos Antivirus for Linux)のインストール</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h2 id="概要"><a href="#概要" class="headerlink" title="概要"></a>概要</h2><p>巷ではデスクトップLinuxは堅牢とか、シェアが少ないからウィルス対策ソフトは必要ないっていう話を聞くけれど、僕はウィルス対策ソフトがないとなんだか不安で仕方ない性分なのでインストールした。</p>
+<p>色々調べていると、「ClamAV」というウィルス対策ソフトがメジャーらしいが、こちらのソフトはちょっと設定が大変そうだったり、ウィルススキャンがcronに登録して定期実行するのでリアルタイムに監視できなさそうって思った。</p>
+<p>なんかリアルタイムでスキャンできて簡単に構築できるものがないか調べたところ、「Sophos Antivirus for Linux」というものがあるということを知ったので試してみた。</p>
+<h2 id="Sophos-Antivirus-for-Linuxのダウンロード"><a href="#Sophos-Antivirus-for-Linuxのダウンロード" class="headerlink" title="Sophos Antivirus for Linuxのダウンロード"></a>Sophos Antivirus for Linuxのダウンロード</h2><p>以下のページからSophos Antivirus for Linuxをダウンロードする。ダウンロードするには、ユーザー登録、利用規約承諾などがあるため、画面に従い情報を入力する。最後まですすめるとtgzファイルがダウンロードできる。</p>
+<p><a href="https://www.sophos.com/ja-jp/products/free-tools/sophos-antivirus-for-linux.aspx" target="_blank" rel="noopener">Sophos Antivirus for Linuxダウンロードページ</a></p>
+<p><img src="/images/install-Sophos-Antivirus-for-linux/screenshot_1.png" alt="ダウンロードページ"></p>
+<h2 id="Sophos-Antivirus-for-Linuxのインストール"><a href="#Sophos-Antivirus-for-Linuxのインストール" class="headerlink" title="Sophos Antivirus for Linuxのインストール"></a>Sophos Antivirus for Linuxのインストール</h2><p>まずはtgzファイルを解凍する<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar zxvf sav-linux-free-9.tgz</span><br></pre></td></tr></table></figure></p>
+<p>その後、解凍ディレクトリ内に存在する<code>install.sh</code>を実行する。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">cd /path/to/dir/sophos-av</span><br><span class="line">./install.sh</span><br><span class="line"></span><br><span class="line">Sophos Anti-Virus</span><br><span class="line">=================</span><br><span class="line">Copyright 1989-2018 Sophos Limited. All rights reserved.</span><br><span class="line"></span><br><span class="line">Sophos Anti-Virus インストーラへようこそ。Sophos Anti-Virus には、オンアクセススキャナ、オンデマンドコマンドラインスキャナ、Sophos Anti-Virus デーモンがあります。</span><br><span class="line"></span><br><span class="line">オンアクセススキャナ         ファイルがアクセスされると検索し、未感染の場合のみアクセスを許可</span><br><span class="line">オンデマンドスキャナ         コンピュータの全体または一部を直ちに検索</span><br><span class="line">Sophos Anti-Virus デーモン   Sophos Anti-Virus にコントロール、ログ、メール警告機能を提供するバックグラウンドプロセス</span><br><span class="line"></span><br><span class="line">(中略)</span><br><span class="line"></span><br><span class="line">エンドユーザー使用許諾契約および個人情報保護方針に同意します。 はい(Y)/いいえ(N) [N]</span><br><span class="line">&gt;Y</span><br><span class="line"></span><br><span class="line">Sophos Anti-Virus のインストール先を指定してください。 [/opt/sophos-av]</span><br><span class="line">&gt;</span><br><span class="line"></span><br><span class="line">オンアクセス検索を有効にしますか？ はい(Y)/いいえ(N) [Y]</span><br><span class="line">&gt; Y</span><br><span class="line"></span><br><span class="line">ソフォスは、Sophos Anti-Virus での自動アップデートの設定をお勧めします。</span><br><span class="line"></span><br><span class="line">ソフォスから直接アップデートしたり（要アカウント情報）、自社サーバー（ディレクトリや Web サイト（アカウント情報が必要な場合もあります））からアップデートすることができます。</span><br><span class="line"></span><br><span class="line">オートアップデートの種類を選択してください: ソフォス(s)/自社サーバー(o)/なし(n) [s]</span><br><span class="line">&gt; s</span><br><span class="line"></span><br><span class="line">ソフォスから直接アップデートしています。</span><br><span class="line">SAV for Linux の無償バージョン (f) と サポート対応付きバージョン (s) のどちらをインストールしますか？ [s]</span><br><span class="line">&gt; f</span><br><span class="line"></span><br><span class="line">Sophos Anti-Virus for Linux の無償バージョンに対して、サポート対応は提供されていません。</span><br><span class="line">無償ツールのフォーラムは次のサイトを参照してください。http://openforum.sophos.com/</span><br><span class="line">ソフォスからアップデートを行うためにプロキシが必要ですか？ はい(Y)/いいえ(N) [N]</span><br><span class="line">&gt; N</span><br><span class="line"></span><br><span class="line">無償のアップデート用アカウント情報を取得しています。</span><br><span class="line">Sophos Anti-Virus をインストールしています....</span><br><span class="line">適切なカーネルサポートを選択しています...</span><br><span class="line">Sophos Anti-Virus が起動すると、カーネルサポートを見つけるためアップデートします。 これによって大幅な遅れが発生することがあります。</span><br><span class="line">Sophos Anti-Virus は、インストール終了後、開始されました。</span><br><span class="line"></span><br><span class="line">インストールが完了しました。</span><br><span class="line">ご使用のコンピュータは Sophos Anti-Virus で保護されるようになりました。</span><br></pre></td></tr></table></figure></p>
+<h2 id="ウィルス定義の手動アップデート"><a href="#ウィルス定義の手動アップデート" class="headerlink" title="ウィルス定義の手動アップデート"></a>ウィルス定義の手動アップデート</h2><p>以下のコマンドを入力することでウィルス定義の手動アップデートが実行できる<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo /opt/sophos-av/bin/savupdate</span><br></pre></td></tr></table></figure></p>
+<h2 id="【備考】アンインストール"><a href="#【備考】アンインストール" class="headerlink" title="【備考】アンインストール"></a>【備考】アンインストール</h2><p>以下のコマンドを入力することでアンインストールができる。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/opt/sophos-av/uninstall.sh</span><br></pre></td></tr></table></figure></p>
+<h2 id="あとがき"><a href="#あとがき" class="headerlink" title="あとがき"></a>あとがき</h2><p>設定で色々いじれたり、自動アップデートがいつ走るとか、リアルタイムスキャンでウィルスが検出されるとどうなるかとかは未検証だけど、時間があるときにやってみたい。</p>
+<h2 id="参考ページ"><a href="#参考ページ" class="headerlink" title="参考ページ"></a>参考ページ</h2><p>以下のページがとても参考になりました。ありがとうございます。</p>
+<ul>
+<li><a href="https://qiita.com/ayuri/items/342a0ddbd861ab1f5134" target="_blank" rel="noopener">Ubuntu Server 16.04にSophos Antivirus for Linuxをインストールする</a></li>
+<li><a href="https://qiita.com/umchifre/items/1a01330d596680642585" target="_blank" rel="noopener">ソフォスの無料版 Linux アンチウイルス製品を試す</a></li>
+</ul>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2019-01-29T15:30:05.004Z"><a href="/install-japanese-input-linuxmint19/">2019-01-30</a></time>
       
       
   
@@ -330,7 +320,64 @@
     <header>
       
         <div class="icon"></div>
-        <time datetime="2018-12-17T11:10:55.000Z"><a href="/check-tech/">2018-12-17</a></time>
+        <time datetime="2019-01-29T15:30:05.004Z"><a href="/enable-chmod-wsl/">2019-01-30</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/enable-chmod-wsl/">Windows Subsystem for Linux(WSL)上のUbuntuでファイルパーミッションを設定できるようにする</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h2 id="概要"><a href="#概要" class="headerlink" title="概要"></a>概要</h2><p>「<a href="/change-home-directory-wsl/">Windows Subsystem for Linux(WSL)上のUbuntuでホームディレクトリを変更する</a>」の手順で<code>/mnt/c</code>をホームディレクトリにすると、作成したファイルがすべて777パーミッションで作成され、chmodが効かない現象が発生する。これは、デフォルトでは<code>/mnt/c</code>がメタデータを保持できないファイルシステムでマウントされており、Linuxのファイルパーミッションが保持できない状態になっているためである。</p>
+<p>この問題は、Windows10 RS4というバージョンから改良されており、Cドライブを<code>devfs</code>というファイルシステムのメタデータありモードでマウントすることによって解決することができるようになっているとのこと。詳細は<a href="http://ascii.jp/elem/000/001/623/1623594/" target="_blank" rel="noopener">こちら</a>の記事が詳しく説明してくれている。</p>
+<p>手順については<a href="https://qiita.com/remin/items/a726128ab388cb73d9ee" target="_blank" rel="noopener">こちら</a>が参考になりました。<br>両ページに感謝いたします。</p>
+<h2 id="Cドライブのマウント形式を変更する"><a href="#Cドライブのマウント形式を変更する" class="headerlink" title="Cドライブのマウント形式を変更する"></a>Cドライブのマウント形式を変更する</h2><p>以下の手順でWindowsのCドライブを<code>devfs</code>ファイルシステムのメタデータ有効化をした状態でマウントができる。</p>
+<blockquote>
+<p>WindowsのファイルシステムにはLinuxのメタデータが存在しないため、パーミッションを設定することができませんでした。しかし、build 17063のリリースによってそのメタデータを扱えるようになりました。メタデータを有効にするには、次のようにmetadataオプションを付けてドライブをマウントします。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo umount /mnt/c</span><br><span class="line">sudo mount -t drvfs C: /mnt/c -o metadata</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<h2 id="設定の恒久化"><a href="#設定の恒久化" class="headerlink" title="設定の恒久化"></a>設定の恒久化</h2><p>「build 17093」から上記の設定が恒久化できるみたい。</p>
+<blockquote>
+<p>WSLの設定ファイル/etc/wsl.confを編集します。ファイルが存在しない場合は作成してください<br>[automount]セクションのoptionsにmetadataを追加します。必要な最小限の設定は次のようになります。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[automount]</span><br><span class="line">options = &quot;metadata&quot;</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
+<p>すでにoptionsがある場合は「,」区切りでその前か後に追記します。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">options = &quot;metadata,case=off&quot;</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<h2 id="新規作成するファイルおよびフォルダのデフォルトパーミッションを変更"><a href="#新規作成するファイルおよびフォルダのデフォルトパーミッションを変更" class="headerlink" title="新規作成するファイルおよびフォルダのデフォルトパーミッションを変更"></a>新規作成するファイルおよびフォルダのデフォルトパーミッションを変更</h2><p>上記の手順で、chmodによるファイルパーミッションが変更できるようになるが、新規作成されるフォルダのパーミッションが777で作成されてしまう。<br>ディレクトリは755ファイルは644で作成されるように設定する。</p>
+<p>方法としては、シェルログイン時に割り込んで実行される<code>.profile</code>ファイル内で、新規作成ファイルのファイルパーミッション設定を行う<code>umask</code>コマンドを実行することで実現する。</p>
+<p><a href="https://qiita.com/minwinmin/items/bf1664fc861932db884c" target="_blank" rel="noopener">こちら</a>の手順が参考になりました。感謝します。</p>
+<h2 id="profileファイルにumaskコマンドの追記"><a href="#profileファイルにumaskコマンドの追記" class="headerlink" title=".profileファイルにumaskコマンドの追記"></a><code>.profile</code>ファイルに<code>umask</code>コマンドの追記</h2><p><code>.profile</code>ファイルをエディタで開く。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim ~/.profile</span><br></pre></td></tr></table></figure>
+<p><code>.profile</code>ファイル内に以下のコマンドを追記する。</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">umask 022</span><br></pre></td></tr></table></figure>
+<h2 id="【補足】システム全体で新規作成するファイルおよびフォルダのデフォルトパーミッションを変更する"><a href="#【補足】システム全体で新規作成するファイルおよびフォルダのデフォルトパーミッションを変更する" class="headerlink" title="【補足】システム全体で新規作成するファイルおよびフォルダのデフォルトパーミッションを変更する"></a>【補足】システム全体で新規作成するファイルおよびフォルダのデフォルトパーミッションを変更する</h2><p>上記の<code>.profile</code>ファイルは、ホームディレクトリ以下にあるため、別のユーザーでシェルを立ち上げると<code>umask</code>コマンドが実行されない。<br>システム全体で<code>umask</code>コマンドを実行するには、<code>/etc/profile</code>ファイルにコマンドを追記することで、シェルにログインした際に追記したコマンドを実行してくれるらしい。まだ未検証なので補足程度に。</p>
+<h2 id="参考ページ"><a href="#参考ページ" class="headerlink" title="参考ページ"></a>参考ページ</h2><p><a href="https://qiita.com/remin/items/a726128ab388cb73d9ee" target="_blank" rel="noopener">WSLからマウントしたWindowsのドライブでchmodしたい</a></p>
+<p><a href="http://ascii.jp/elem/000/001/623/1623594/" target="_blank" rel="noopener">RS4におけるWindows Subsystem for Linuxの改良点 drvfsのメタデータ対応</a></p>
+<p><a href="https://qiita.com/minwinmin/items/bf1664fc861932db884c" target="_blank" rel="noopener">WSL(Windows Subsystem for Linux)の初期パーミッション設定</a></p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2019-01-29T15:30:05.000Z"><a href="/check-tech/">2019-01-30</a></time>
       
       
   
@@ -346,6 +393,134 @@
 <h2 id="Python"><a href="#Python" class="headerlink" title="Python"></a>Python</h2><p>プログラミング言語。汎用性が高いようで、様々なシーンで使用されていると耳にする。よく聞く分野では、組み込み系、Web系、人工知能、解析、ゲームなんかも作れるとかなんとか。思想が合っているような気がしているのと、汎用性が高いので覚えると色々なものを作れるようになることから、ぜひ習得してみたいと思った。</p>
 <h2 id="flask"><a href="#flask" class="headerlink" title="flask"></a>flask</h2><p>PythonのWebフレームワーク。公式曰く、「マイクロフレームワーク」というのらしく、コアの機能はシンプルで少なく、拡張性に富んでいるという設計らしい。<br>個人的にはフレームワークというものに触れてきたことが少なく、Pythonも気になっているプログラミング言語であることから、何か簡単なWebサービス作ってみたいなぁと思った。</p>
 <h2 id="Julia"><a href="#Julia" class="headerlink" title="Julia"></a>Julia</h2><p>プログラミング言語。これはPython関係のニュースを眺めているときに発見した言語なんだけど、Pythonは実行速度が遅いといわれている。それに対しこのJuliaという言語は、Cの速度で動くPythonのように汎用的に使える言語が欲しいってことでJuliaを作ったみたい。まだ日本では有名ではない言語ではありそうだけど、Pythonのライバルとか言われてるっぽいのでとても興味がある。開発者がなぜJuliaを作ったかは、<a href="https://julialang.org/blog/2012/02/why-we-created-julia" target="_blank" rel="noopener">こちら(原文英語)</a>か<a href="https://www.geidai.ac.jp/~marui/julialang/why_we_created_julia/index.html" target="_blank" rel="noopener">こちら(有志による和訳)</a>をごらんください。</p>
+<h2 id="Firebase"><a href="#Firebase" class="headerlink" title="Firebase"></a>Firebase</h2><p>クラウド上に色々作ってバックエンドを実装しなくても済むよ！って感じのツール群（らしい）。先輩に教えてもらった。まだ調べてる途中。いつか使ってみたい。</p>
+<h2 id="React"><a href="#React" class="headerlink" title="React"></a>React</h2><p>JSのライブラリ？動的に作成されるデータと、HTMLをマッピングして、動的にDOMをいい感じにしてくれるもの？先輩に教えてもらった。まだ調べてる途中。</p>
+<h2 id="OctoberCMS"><a href="#OctoberCMS" class="headerlink" title="OctoberCMS"></a>OctoberCMS</h2><p><a href="https://octobercms.com" target="_blank" rel="noopener">https://octobercms.com</a></p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2019-01-29T15:30:05.000Z"><a href="/connect-wifi-centos7/">2019-01-30</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/connect-wifi-centos7/">CentOS 7でWi-fiに接続する手順メモ</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h2 id="概要"><a href="#概要" class="headerlink" title="概要"></a>概要</h2><p>家に余ってたノートPCでサーバー構築を学習しているとき、Wi-fiでネットワークに接続することを試みた。その時の手順を忘れないようにメモしておく。</p>
+<h2 id="検証したOS"><a href="#検証したOS" class="headerlink" title="検証したOS"></a>検証したOS</h2><p>CentOS Linux 7.3</p>
+<h2 id="NICのデバイス名の確認"><a href="#NICのデバイス名の確認" class="headerlink" title="NICのデバイス名の確認"></a>NICのデバイス名の確認</h2><p>TYPEが<code>wifi</code>のデバイスが無線NICである、<br>その名前を確認する。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmcli d</span><br></pre></td></tr></table></figure></p>
+<h2 id="NICの有効状態の確認"><a href="#NICの有効状態の確認" class="headerlink" title="NICの有効状態の確認"></a>NICの有効状態の確認</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mmcli radio wifi</span><br></pre></td></tr></table></figure>
+<h2 id="ネットワークマネージャーがwi-fiを使用できるか確認"><a href="#ネットワークマネージャーがwi-fiを使用できるか確認" class="headerlink" title="ネットワークマネージャーがwi-fiを使用できるか確認"></a>ネットワークマネージャーがwi-fiを使用できるか確認</h2><p>wi-fiに接続するには、ネットワークマネージャーのwi-fi用プラグインが<br>必要な模様。以下のコマンドで確認すること。</p>
+<p>今回の環境では、プラグインが最初からインストールされていたため、そのまま手順を進めた。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum list installed | grep NetworkManager-wifi</span><br></pre></td></tr></table></figure></p>
+<h2 id="周辺のwi-fiアクセスポイントの確認"><a href="#周辺のwi-fiアクセスポイントの確認" class="headerlink" title="周辺のwi-fiアクセスポイントの確認"></a>周辺のwi-fiアクセスポイントの確認</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmcli dev wifi list</span><br></pre></td></tr></table></figure>
+<h2 id="wi-fiアクセスポイントに接続"><a href="#wi-fiアクセスポイントに接続" class="headerlink" title="wi-fiアクセスポイントに接続"></a>wi-fiアクセスポイントに接続</h2><p>以下のコマンドでアクセスポイントに接続する。<a href="http://qiita.com/youyo_/items/376503446135c0dd3da7" target="_blank" rel="noopener">こちら</a>のページを参考にした。ありがとうございます。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmcli device wifi connect (アクセスポイントのSSID名) password (アクセスポイントのパスワード)</span><br></pre></td></tr></table></figure></p>
+<h2 id="接続情報の確認"><a href="#接続情報の確認" class="headerlink" title="接続情報の確認"></a>接続情報の確認</h2><p>下記コマンドで出力される設定値一覧に<code>ONBOOT=yes</code>となっているか確認すること。<br>ONBOOTがyesになっていないと、起動時に自動的に接続されない。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">less /etc/sysconfig/network-scripts/ifcfg-auhome_adT3nd</span><br></pre></td></tr></table></figure></p>
+<h2 id="参考ページ"><a href="#参考ページ" class="headerlink" title="参考ページ"></a>参考ページ</h2><p>下記ページを参考にさせていただきました。ありがとうございます。</p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2019-01-29T15:30:05.000Z"><a href="/create-submodule-git/">2019-01-30</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/create-submodule-git/">Gitリポジトリ内で別のリポジトリを管理する</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h2 id="概要"><a href="#概要" class="headerlink" title="概要"></a>概要</h2><p>Gitリポジトリで管理しているディレクトリの中で、別のリポジトリを取り込んで管理したい場合があった。親のリポジトリをcloneした後に、各リポジトリをcloneするのは面倒なので、何か一発で必要なリポジトリを取得できる機能がないか調べてみた。</p>
+<p>すると、<code>git submodule</code>という機能を見つけたので使ってみた。</p>
+<h2 id="サブモジュールを親のリポジトリ内に追加する"><a href="#サブモジュールを親のリポジトリ内に追加する" class="headerlink" title="サブモジュールを親のリポジトリ内に追加する"></a>サブモジュールを親のリポジトリ内に追加する</h2><p>以下のコマンドを実行する。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git submodule add [リポジトリ名] [リポジトリを追加したいディレクトリパス]</span><br></pre></td></tr></table></figure></p>
+<h2 id="【重要】git-submoduleの注意点"><a href="#【重要】git-submoduleの注意点" class="headerlink" title="【重要】git submoduleの注意点"></a>【重要】git submoduleの注意点</h2><p><code>git submodule</code>でややこしいところは、親のリポジトリとサブモジュールは連動しないということである。</p>
+<p><a href="https://qiita.com/sotarok/items/0d525e568a6088f6f6bb" target="_blank" rel="noopener">こちら</a>の記事がわかりやすかったです。感謝します。</p>
+<h2 id="clone後にサブモジュールを取得する"><a href="#clone後にサブモジュールを取得する" class="headerlink" title="clone後にサブモジュールを取得する"></a>clone後にサブモジュールを取得する</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git clone parent-repository</span><br><span class="line">git submodule init</span><br><span class="line">git submodule update</span><br></pre></td></tr></table></figure>
+<h2 id="【未検証】サブモジュールをすべて最新版に更新する"><a href="#【未検証】サブモジュールをすべて最新版に更新する" class="headerlink" title="【未検証】サブモジュールをすべて最新版に更新する"></a>【未検証】サブモジュールをすべて最新版に更新する</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git submodule foreach git pull origin master</span><br></pre></td></tr></table></figure>
+<h2 id="参考ページ"><a href="#参考ページ" class="headerlink" title="参考ページ"></a>参考ページ</h2><p><a href="https://qiita.com/sotarok/items/0d525e568a6088f6f6bb" target="_blank" rel="noopener">Git submodule の基礎</a></p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2019-01-29T15:30:04.996Z"><a href="/change-home-directory-wsl/">2019-01-30</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/change-home-directory-wsl/">Windows Subsystem for Linux(WSL)上のUbuntuでホームディレクトリを変更する</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h2 id="概要"><a href="#概要" class="headerlink" title="概要"></a>概要</h2><p>Windows Subsystem for Linux(以下WSL)でUbuntuをインストールしたんだけど、Ubuntu内のmdファイルをWindowsのatomエディタで参照したかった。けれど、標準で作成されるホームディレクトリはWindowsから参照する方法がわからなかったので、ホームディレクトリを変更する手順をとった。</p>
+<p><a href="https://qiita.com/funafuna/items/c3bb78a546cf2605205d" target="_blank" rel="noopener">こちら</a>の記事を参考にさせてもらいました。ありがとうございます。</p>
+<h2 id="実行したOSのバージョン"><a href="#実行したOSのバージョン" class="headerlink" title="実行したOSのバージョン"></a>実行したOSのバージョン</h2><p>Ubuntu 18.04.1 LTS</p>
+<h2 id="ホームディレクトリの変更手順"><a href="#ホームディレクトリの変更手順" class="headerlink" title="ホームディレクトリの変更手順"></a>ホームディレクトリの変更手順</h2><h3 id="Ubuntuのインストール"><a href="#Ubuntuのインストール" class="headerlink" title="Ubuntuのインストール"></a>Ubuntuのインストール</h3><p>WSLを有効化し、Ubuntuをインストールする。インストールする手順は、記事の本流から外れてしまうので割愛する。</p>
+<h3 id="新しいホームディレクトリを作成する"><a href="#新しいホームディレクトリを作成する" class="headerlink" title="新しいホームディレクトリを作成する"></a>新しいホームディレクトリを作成する</h3><p>WindowsのCドライブが<code>/mnt/c</code>で参照できるため、以下のコマンドで新しいホームディレクトリを作成する。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/mnt/c/linux-home/username</span><br></pre></td></tr></table></figure>
+<h3 id="ホームディレクトリの変更"><a href="#ホームディレクトリの変更" class="headerlink" title="ホームディレクトリの変更"></a>ホームディレクトリの変更</h3><p><code>/etc/passwd</code>にユーザーのホームディレクトリのパスが記されているので、エディタ等で変更する。編集にはroot権限が必要なので注意すること。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/passwd</span><br><span class="line"></span><br><span class="line">username:x:1000:1000:,,,:/home/username:/bin/bash</span><br><span class="line">↓（変更する）</span><br><span class="line">username:x:1000:1000:,,,:/mnt/c/linux-home/username:/bin/bash</span><br></pre></td></tr></table></figure></p>
+<h3 id="設定ファイルの移行"><a href="#設定ファイルの移行" class="headerlink" title="設定ファイルの移行"></a>設定ファイルの移行</h3><p>標準のホームディレクトリには、<code>.bashrc</code>や<code>.viminfo</code>などの設定ファイルが存在するので、新しいホームディレクトリにすべて移動する。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mv -v ~/.[^\.]* /mnt/c/linux-home/username/</span><br></pre></td></tr></table></figure>
+<h3 id="Ubuntuのシェルを再起動し、ホームディレクトリが変更されているか確認"><a href="#Ubuntuのシェルを再起動し、ホームディレクトリが変更されているか確認" class="headerlink" title="Ubuntuのシェルを再起動し、ホームディレクトリが変更されているか確認"></a>Ubuntuのシェルを再起動し、ホームディレクトリが変更されているか確認</h3><p>Ubuntuのシェルをいったん終了したあと再度起動し、ホームディレクトリが<code>/mnt/c/linux-home/username</code>に変更されていることを確認する。</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://qiita.com/funafuna/items/c3bb78a546cf2605205d" target="_blank" rel="noopener">【WSL】ホームディレクトリ変更手順</a></p>
 
       
     </div>
@@ -371,26 +546,28 @@
     <aside id="sidebar" class="alignright">
   
 <div class="widget tag">
-  <h3 class="title">Categories</h3>
+  <h3 class="title">Tags</h3>
   <ul class="entry">
   
-    <li><a href="/categories/技術/Linux/">Linux</a><small>1</small></li>
+    <li><a href="/tags/Linux/">Linux</a><small>5</small></li>
   
-    <li><a href="/categories/その他/">その他</a><small>2</small></li>
+    <li><a href="/tags/Unity/">Unity</a><small>1</small></li>
   
-    <li><a href="/categories/技術/">技術</a><small>3</small></li>
+    <li><a href="/tags/Windows/">Windows</a><small>2</small></li>
+  
+    <li><a href="/tags/git/">git</a><small>1</small></li>
+  
+    <li><a href="/tags/その他/">その他</a><small>3</small></li>
   
   </ul>
 </div>
 
-
-  
 </aside>
     <div class="clearfix"></div>
   </div>
   <footer id="footer" class="inner"><div class="alignleft">
   
-  &copy; 2018 Cheesejp
+  &copy; 2019 Cheesejp
   
 </div>
 <div class="clearfix"></div></footer>

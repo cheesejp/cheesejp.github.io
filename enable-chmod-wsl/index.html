@@ -1,0 +1,172 @@
+<!DOCTYPE HTML>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>Windows Subsystem for Linux(WSL)上のUbuntuでファイルパーミッションを設定できるようにする | ワン簿（仮）</title>
+  <meta name="author" content="Cheesejp">
+  
+  <meta name="description" content="概要「Windows Subsystem for Linux(WSL)上のUbuntuでホームディレクトリを変更する」の手順で/mnt/cをホームディレクトリにすると、作成したファイルがすべて777パーミッションで作成され、chmodが効かない現象が発生する。これは、デフォルトでは/mnt/cがメタ">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="Windows Subsystem for Linux(WSL)上のUbuntuでファイルパーミッションを設定できるようにする">
+  <meta property="og:site_name" content="ワン簿（仮）">
+
+  
+    <meta property="og:image" content="">
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="ワン簿（仮）" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+
+</head>
+</html>
+
+<body>
+  <header id="header" class="inner"><div class="alignleft">
+  <a href="/"><img src="/shiba-inu-icon-black.svg" alt="ロゴ"></a>
+  <h1><a href="/">ワン簿（仮）</a></h1>
+  <h2><a href="/">しがない犬の備忘録</a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div>
+</header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2019-01-29T15:30:05.004Z"><a href="/enable-chmod-wsl/">2019-01-30</a></time>
+      
+      
+  
+    <h1 class="title">Windows Subsystem for Linux(WSL)上のUbuntuでファイルパーミッションを設定できるようにする</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h2 id="概要"><a href="#概要" class="headerlink" title="概要"></a>概要</h2><p>「<a href="/change-home-directory-wsl/">Windows Subsystem for Linux(WSL)上のUbuntuでホームディレクトリを変更する</a>」の手順で<code>/mnt/c</code>をホームディレクトリにすると、作成したファイルがすべて777パーミッションで作成され、chmodが効かない現象が発生する。これは、デフォルトでは<code>/mnt/c</code>がメタデータを保持できないファイルシステムでマウントされており、Linuxのファイルパーミッションが保持できない状態になっているためである。</p>
+<p>この問題は、Windows10 RS4というバージョンから改良されており、Cドライブを<code>devfs</code>というファイルシステムのメタデータありモードでマウントすることによって解決することができるようになっているとのこと。詳細は<a href="http://ascii.jp/elem/000/001/623/1623594/" target="_blank" rel="noopener">こちら</a>の記事が詳しく説明してくれている。</p>
+<p>手順については<a href="https://qiita.com/remin/items/a726128ab388cb73d9ee" target="_blank" rel="noopener">こちら</a>が参考になりました。<br>両ページに感謝いたします。</p>
+<h2 id="Cドライブのマウント形式を変更する"><a href="#Cドライブのマウント形式を変更する" class="headerlink" title="Cドライブのマウント形式を変更する"></a>Cドライブのマウント形式を変更する</h2><p>以下の手順でWindowsのCドライブを<code>devfs</code>ファイルシステムのメタデータ有効化をした状態でマウントができる。</p>
+<blockquote>
+<p>WindowsのファイルシステムにはLinuxのメタデータが存在しないため、パーミッションを設定することができませんでした。しかし、build 17063のリリースによってそのメタデータを扱えるようになりました。メタデータを有効にするには、次のようにmetadataオプションを付けてドライブをマウントします。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo umount /mnt/c</span><br><span class="line">sudo mount -t drvfs C: /mnt/c -o metadata</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<h2 id="設定の恒久化"><a href="#設定の恒久化" class="headerlink" title="設定の恒久化"></a>設定の恒久化</h2><p>「build 17093」から上記の設定が恒久化できるみたい。</p>
+<blockquote>
+<p>WSLの設定ファイル/etc/wsl.confを編集します。ファイルが存在しない場合は作成してください<br>[automount]セクションのoptionsにmetadataを追加します。必要な最小限の設定は次のようになります。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[automount]</span><br><span class="line">options = &quot;metadata&quot;</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
+<p>すでにoptionsがある場合は「,」区切りでその前か後に追記します。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">options = &quot;metadata,case=off&quot;</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<h2 id="新規作成するファイルおよびフォルダのデフォルトパーミッションを変更"><a href="#新規作成するファイルおよびフォルダのデフォルトパーミッションを変更" class="headerlink" title="新規作成するファイルおよびフォルダのデフォルトパーミッションを変更"></a>新規作成するファイルおよびフォルダのデフォルトパーミッションを変更</h2><p>上記の手順で、chmodによるファイルパーミッションが変更できるようになるが、新規作成されるフォルダのパーミッションが777で作成されてしまう。<br>ディレクトリは755ファイルは644で作成されるように設定する。</p>
+<p>方法としては、シェルログイン時に割り込んで実行される<code>.profile</code>ファイル内で、新規作成ファイルのファイルパーミッション設定を行う<code>umask</code>コマンドを実行することで実現する。</p>
+<p><a href="https://qiita.com/minwinmin/items/bf1664fc861932db884c" target="_blank" rel="noopener">こちら</a>の手順が参考になりました。感謝します。</p>
+<h2 id="profileファイルにumaskコマンドの追記"><a href="#profileファイルにumaskコマンドの追記" class="headerlink" title=".profileファイルにumaskコマンドの追記"></a><code>.profile</code>ファイルに<code>umask</code>コマンドの追記</h2><p><code>.profile</code>ファイルをエディタで開く。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim ~/.profile</span><br></pre></td></tr></table></figure>
+<p><code>.profile</code>ファイル内に以下のコマンドを追記する。</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">umask 022</span><br></pre></td></tr></table></figure>
+<h2 id="【補足】システム全体で新規作成するファイルおよびフォルダのデフォルトパーミッションを変更する"><a href="#【補足】システム全体で新規作成するファイルおよびフォルダのデフォルトパーミッションを変更する" class="headerlink" title="【補足】システム全体で新規作成するファイルおよびフォルダのデフォルトパーミッションを変更する"></a>【補足】システム全体で新規作成するファイルおよびフォルダのデフォルトパーミッションを変更する</h2><p>上記の<code>.profile</code>ファイルは、ホームディレクトリ以下にあるため、別のユーザーでシェルを立ち上げると<code>umask</code>コマンドが実行されない。<br>システム全体で<code>umask</code>コマンドを実行するには、<code>/etc/profile</code>ファイルにコマンドを追記することで、シェルにログインした際に追記したコマンドを実行してくれるらしい。まだ未検証なので補足程度に。</p>
+<h2 id="参考ページ"><a href="#参考ページ" class="headerlink" title="参考ページ"></a>参考ページ</h2><p><a href="https://qiita.com/remin/items/a726128ab388cb73d9ee" target="_blank" rel="noopener">WSLからマウントしたWindowsのドライブでchmodしたい</a></p>
+<p><a href="http://ascii.jp/elem/000/001/623/1623594/" target="_blank" rel="noopener">RS4におけるWindows Subsystem for Linuxの改良点 drvfsのメタデータ対応</a></p>
+<p><a href="https://qiita.com/minwinmin/items/bf1664fc861932db884c" target="_blank" rel="noopener">WSL(Windows Subsystem for Linux)の初期パーミッション設定</a></p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+  
+  <div class="tags">
+    <a href="/tags/Linux/">Linux</a>, <a href="/tags/Windows/">Windows</a>
+  </div>
+
+        
+  <div class="addthis addthis_toolbox addthis_default_style">
+    
+      <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+    
+    
+      <a class="addthis_button_tweet"></a>
+    
+    
+      <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+    
+    
+      <a class="addthis_button_pinterest_pinit" pi:pinit:layout="horizontal"></a>
+    
+    <a class="addthis_counter addthis_pill_style"></a>
+  </div>
+  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js"></script>
+
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  
+<div class="widget tag">
+  <h3 class="title">Tags</h3>
+  <ul class="entry">
+  
+    <li><a href="/tags/Linux/">Linux</a><small>5</small></li>
+  
+    <li><a href="/tags/Unity/">Unity</a><small>1</small></li>
+  
+    <li><a href="/tags/Windows/">Windows</a><small>2</small></li>
+  
+    <li><a href="/tags/git/">git</a><small>1</small></li>
+  
+    <li><a href="/tags/その他/">その他</a><small>3</small></li>
+  
+  </ul>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2019 Cheesejp
+  
+</div>
+<div class="clearfix"></div></footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+</body>
+</html>
